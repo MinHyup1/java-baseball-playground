@@ -32,6 +32,9 @@ public class StringTest {
         String value = "(1,2)";
         String substringTest = value.substring(1, value.length() - 1);
         assertThat(substringTest).isEqualTo("1,2");
+
+        String test = "01234".substring(1, 2);
+        System.out.println("test = " + test);
     }
 
     @Test
