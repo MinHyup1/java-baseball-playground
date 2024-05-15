@@ -74,11 +74,4 @@ public class baseballGameMachine {
         }
         return linkedList;
     }
-
-    // 패키지-프라이빗 수준의 setter 메서드 추가\
-
-    void setComputerDigitString(String computerDigitString) {
-        this.computerDigitString = computerDigitString;
-    }
-
 }
