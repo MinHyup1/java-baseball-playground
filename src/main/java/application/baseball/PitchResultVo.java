@@ -2,16 +2,20 @@ package application.baseball;
 
 import java.util.Objects;
 
-public class pitchResultVo {
+public class PitchResultVo {
 
     private boolean isWin; // 게임승리 여부
     private int ballCount; // 볼 개수
     private int strikeCount; // 스트라이크 개수
 
-    public pitchResultVo(boolean isWin, int ballCount, int strikeCount) {
+    public PitchResultVo(boolean isWin, int ballCount, int strikeCount) {
         this.isWin = isWin;
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
+    }
+
+    public boolean getIsWin() {
+        return isWin;
     }
 
     public String getResultString() {
@@ -37,7 +41,7 @@ public class pitchResultVo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        pitchResultVo that = (pitchResultVo) o;
+        PitchResultVo that = (PitchResultVo) o;
         return isWin == that.isWin &&
                 ballCount == that.ballCount &&
                 strikeCount == that.strikeCount;

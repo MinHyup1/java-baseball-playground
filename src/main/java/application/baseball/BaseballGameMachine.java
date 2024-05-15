@@ -3,7 +3,7 @@ package application.baseball;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class baseballGameMachine {
+public class BaseballGameMachine {
     //기본적으로 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임이다.
     //같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 포볼 또는 낫싱이란 힌트를 얻고, 그 힌트를 이용해서 먼저 상대방(컴퓨터)의 수를 맞추면 승리한다.
     //e.g. 상대방(컴퓨터)의 수가 425일 때, 123을 제시한 경우 : 1스트라이크, 456을 제시한 경우 : 1볼 1스트라이크, 789를 제시한 경우 : 낫싱
@@ -13,22 +13,26 @@ public class baseballGameMachine {
     private String computerDigitString;
 
 
-    public baseballGameMachine() {
+    public BaseballGameMachine() {
         this.computerDigitString = createThreeUniqueDigitString();
     }
 
-    public pitchResultVo pitched (String playerDigitString) {
+    public void newBaseballGame() {
+        this.computerDigitString = createThreeUniqueDigitString();
+    }
+
+    public PitchResultVo pitched (String playerDigitString) {
         // 스트라이크 검사
         LinkedList<String> playerDigitStringCharArray = convertStringToLinkedList(playerDigitString);
 
         int strikeCount = countStrike(playerDigitStringCharArray);
         
         // 플레이어 승리
-        if(strikeCount == 3) return new pitchResultVo(true, 0, 3);
+        if(strikeCount == 3) return new PitchResultVo(true, 0, 3);
         int ballCount = countBall(playerDigitStringCharArray);
 
         // 볼 검사
-        return new pitchResultVo(false,ballCount,strikeCount);
+        return new PitchResultVo(false,ballCount,strikeCount);
     }
 
     private int countBall(LinkedList<String> playerDigitStringCharArray) {

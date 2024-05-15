@@ -1,6 +1,5 @@
 package application.baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -61,13 +60,13 @@ class baseballGameMachineTest {
             "156,165,false,2,1",
     })
     void 숫자야구게임_테스트(String computerDigits, String playerDigits, boolean expectedWin, int expectedBalls, int expectedStrikes) throws Exception {
-        baseballGameMachine baseballGameMachine = new baseballGameMachine();
+        BaseballGameMachine baseballGameMachine = new BaseballGameMachine();
         // 리플렉션을 사용하여 private 필드에 접근하고 설정
-        Field computerDigitStringField = baseballGameMachine.class.getDeclaredField("computerDigitString");
+        Field computerDigitStringField = BaseballGameMachine.class.getDeclaredField("computerDigitString");
         computerDigitStringField.setAccessible(true);
         computerDigitStringField.set(baseballGameMachine, computerDigits);
-        pitchResultVo result = baseballGameMachine.pitched(playerDigits);
-        pitchResultVo expected = new pitchResultVo(expectedWin, expectedBalls, expectedStrikes);
+        PitchResultVo result = baseballGameMachine.pitched(playerDigits);
+        PitchResultVo expected = new PitchResultVo(expectedWin, expectedBalls, expectedStrikes);
 
         System.out.println(result.getResultString());
         assertThat(result).isEqualTo(expected);
