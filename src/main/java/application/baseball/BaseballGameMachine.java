@@ -17,7 +17,7 @@ public class BaseballGameMachine {
         this.computerDigitString = createThreeUniqueDigitString();
     }
 
-    public void newBaseballGame() {
+    public void reGeneratedComputerNumber() {
         this.computerDigitString = createThreeUniqueDigitString();
     }
 

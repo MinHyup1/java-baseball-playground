@@ -33,20 +33,12 @@ class baseballGameMachineTest {
         for (int i = 0; i < 3; i++) {
             result.append(digits.get(i));
         }
-
         System.out.println("result.toString() = " + result.toString());
 
         // 정규 표현식: 0-9의 숫자가 3번 나오고, 각각이 유일해야 한다.
         Pattern pattern = Pattern.compile("^(?!.*(.).*\\1)\\d{3}$");
         boolean isMatches = pattern.matcher(result.toString()).matches();
         assertThat(isMatches).isTrue();
-
-    }
-
-    private Object getFieldValue(Object obj, String fieldName) throws NoSuchFieldException, IllegalAccessException {
-        Field field = obj.getClass().getDeclaredField(fieldName);
-        field.setAccessible(true); // 필드에 접근 가능하도록 설정
-        return field.get(obj);
     }
 
     @ParameterizedTest
